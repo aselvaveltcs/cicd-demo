@@ -1,0 +1,20 @@
+pipeline{
+ agent any
+ stages {
+ 	stage ('Build'){
+ 		steps {
+ 			withMaven(maven:'maven'){
+ 				sh 'mvn -f blog-api/pom.xml clean install'
+ 			}
+ 		}
+ 	}
+ 	stage ('Deploy'){
+ 		steps {
+ 			withMaven(maven:'maven'){
+ 				sh 'mvn -f blog-api/pom.xml com.apim:maven-api-deploy:1.0.0:deploy'
+ 			}
+ 		}
+ 	}
+ }
+
+}
