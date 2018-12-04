@@ -1,10 +1,13 @@
-
-
 node {
-   stage('Build') {
-     sh 'mvn -f blog-api/pom.xml clean install'
+   def mvnHome
+   stage('Preparation') { 
+      git 'https://github.com/anupamgogoi-wso2/cicd-demo.git'        
+      mvnHome = tool 'maven'
    }
-   stage('Results') {
-     sh 'mvn -f blog-api/pom.xml com.apim:maven-api-deploy:1.0.0:deploy'
+   stage('Build') {
+      sh "'${mvnHome}/bin/mvn' -f blog-api/pom.xml  clean install "
+   }
+   stage('Deploy') {
+     sh "'${mvnHome}/bin/mvn' -f blog-api/pom.xml  com.apim:maven-api-deploy:1.0.0:deploy "
    }
 }
