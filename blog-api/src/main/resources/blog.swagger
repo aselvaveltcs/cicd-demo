@@ -1,0 +1,24 @@
+swagger: "2.0"
+paths:
+  /posts:
+    get:
+      responses:
+        "200":
+          description: ""
+    post:
+      parameters:
+        - name: Payload
+          description: Request Body
+          required: false
+          in: body
+          schema:
+            type: object
+            properties:
+              payload:
+                type: string
+      responses:
+        "200":
+          description: ""
+info:
+  title: Blog
+  version: 1.0.0
