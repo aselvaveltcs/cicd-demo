@@ -6,7 +6,13 @@
 	<artifactId>blog-api</artifactId>
 	<version>1.0.0</version>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>com.github.anupamgogoi-wso2</groupId>
+			<artifactId>maven-plugin</artifactId>
+			<version>61547299a4</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<pluginManagement>
 			<plugins>
