@@ -47,4 +47,11 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>wso2</id>
+			<url>https://bitbucket.org/anupamgogoi/maven-artifacts/raw/master/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
