@@ -1,13 +1,20 @@
 node {
    def mvnHome
+   def certificate
    stage('Preparation') { 
+      echo "##########Preparing repository##########"
       git 'https://github.com/anupamgogoi-wso2/cicd-demo.git'        
       mvnHome = tool 'maven'
+      certificate = "/Users/anupamgogoi/softwares/wso2/am/260/wso2am-2.6.0/repository/resources/security/client-truststore.jks"
    }
    stage('Build') {
+      echo "##########Build project##########"
       sh "'${mvnHome}/bin/mvn' -f blog-api/pom.xml  clean install "
    }
    stage('Deploy') {
-     sh "'${mvnHome}/bin/mvn' -f blog-api/pom.xml  com.apim:maven-api-deploy:1.0.0:deploy "
+     echo "##########Deploy API##########"
+     def command="'${mvnHome}/bin/mvn' -f blog-api/pom.xml com.apim:maven-api-deploy:1.0.0:deploy -Djavax.net.ssl.trustStore=${certificate} -Djavax.net.ssl.trustStorePassword=wso2carbon"
+     echo "${command}"
+     sh "${command}"
    }
 }
