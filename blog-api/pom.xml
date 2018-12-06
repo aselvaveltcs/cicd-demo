@@ -23,7 +23,7 @@
 					<artifactId>maven-api-deploy</artifactId>
 					<version>1.0.0</version>
 					<configuration>
-						<host>localhost</host>
+						<host>187.11.122.155</host>
 						<username>admin</username>
 						<password>admin</password>
 						<apiname>Demo</apiname>
